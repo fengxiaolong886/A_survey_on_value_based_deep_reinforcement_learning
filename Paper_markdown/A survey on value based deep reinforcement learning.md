@@ -49,36 +49,35 @@ Rather than computing the full expectations in the above gradient, it is often c
 The researchers have dive into the fields of RL for decades, the traditional RL algorithms have been well developed and also work very well when we combine with deep learning currently. There are many article have surveied the traditional RL, such as [Abhijit Gosavi],[Michael L.Littman 1996],[sutton], [Algorithms for reinforcement learning by szepesvari].
 Due to the advent of deep learning has had a significant impact on many areas in machine learning, it also dramatically improving the state-of-the-art in the RL. So, there are also some survey conver the seminal and recent developments in deep RL，such as [1708.05866]. For a more comprehensive survey of recent efforts in DRL, including applications of DRL to areas such as natural language processing \citep{ranzato2016sequence, bahdanau2017actor}, we refer readers to the overview by Li \citep{li2017deep}.
 
-
 # Value-based RL
+
 The value-based RL algorithms will build a value function, which subsequently define a policy. The basis and most popular value-based algorithms is the Q-learning algorithm \citep{watkins1989learning} and its variant, the fitted Q-learning, that uses parameterized function approximators \citep{gordon1996stable}.
 
-Before we dive into the Q-learning, we should consider the sarsa algorithm at firt. Sarsa is on-policy algorithm and Q-learning is also be consider a off-policy algorithm.  On-policy alogrithms
+Before we dive into the Q-learning, we should consider the Sarsa algorithm at firt. Sarsa is on-policy algorithm and Q-learning is always considered as  an off-policy algorithm.  On-policy alogrithms
 
-**sarsa**
+**Sarsa Algorithm**
+Sarsa algorithm is to learn an action-value function, $q_\pi (s,a)$, rather than a state-value function. We get the reward from $q_pi (s_t,a_t)$ and lead to new state-action pair (s_{t+1},a_{t+1}), so that we get the chain according to the state, action and reward. We shown the firgue of Sarsa in Figure x.
+[Sarsa figure]
 The SARSA algorithm is given in algorithm-x:
+[Algorithm in P130 of sutton]
 
-
-**Q-learning:** 
+**Q-learning Algorithm:** 
 The basic version of Q-learning will lookup table of values $Q(s, a)$. The alogrithms aims to learn the optimal Q-value function, and the Q-learning algorithm makes use of the Bellman equation for the Q-value function \citep{bellman1962applied}.
 By Banach's theorem, the fixed point of the Bellman operator exists when the two conditions are satisified. The state-action pairs are represented discretely and  all actions are repeatedly sampled in all states.
 But this simple alogrithms can not work well when we face the high-dimensional state-action space. We must consider the parameterized value function $Q(s, a; \theta)$, where $\theta$ refers to some parameters that define the Q-values.
-
 The Q-learning algorithm is given in algorithm-x:
-
-
-
+[[Algorithm in P131 of sutton]]
 **Fitted Q-learning:**
 As we could get many experience $(s,a,r,s')$ from the given dataset $D$, where the state at the next time-step $s'$ is generated based on transistion probability $T(s,a,\cdot)$ and the reward $r$ is given by the reward function $R(s,a,s')$. In fitted Q-learning \citep{gordon1996stable}, the algorithm based on random initialization of the Q-values $Q(s, a; \theta_0 )$ where $\theta_0$ with respec to the initial parameter.  Then,  at each iteration  $Q(s, a; \theta_k )$ is updated towards the target value with an approximation of the Q-values.
 $$
 Y_k^Q = r +\gamma \operatorname*{max}_{a' \in \mathcal A} Q(s',a';\theta_{k})
 $$
 where $\theta_k$ withs respect to  the parameters in the  $k_{th}$ iteration. The update is performed form the whole set of experience. 
-
 The Fitted Q-learning algorithm is given in algorithm-x:
 ---
-based on silver lecture 6
 ---
+---
+based on silver lecture 6
 ** linear combinations of features**
 slide 13
 
@@ -94,7 +93,9 @@ slide 13
 **Nearest neighbour**
 
 **Fourier/wavelet bases""
-
+---
+---
+---
 **Neural Fitted Q-learning (NFQ)**
 
 In neural fitted Q-learning (NFQ) \citep{riedmiller2005neural},  we feed the state to the Q-network and output the probability of each action. This structure  can efficiently obtaining the computation of the maximum Q-value in state $s'$ . The Q-values are parameterized with a neural network $Q(s,a;\theta_k)$ where the parameters $\theta_k$ are updated by SGD to minimize the square loss:
@@ -120,9 +121,46 @@ The Neural Fitted Q-learning (NFQ) algorithm is given in algorithm-x:
 
 Here we specifically survey the deep Q-network (DQN) algorithm \citep{mnih2015human} which has achieved superhuman-level control when playing atari games from the pixels by using neural networks as function approximators. We will also survey various improvements of the DQN algorithm.
 **Deep Q-networks**
-Leveraging ideas from NFQ, the deep Q-network (DQN) algorithm introduced by \citet{mnih2015human} is able to obtain strong performance in an online setting for a variety of ATARI games, directly by learning from the pixels.
 
-**dueling **
+%from 1810.07862
+Leveraging ideas from NFQ, the deep Q-network (DQN) algorithm introduced by \citet{mnih2015human} is able to obtain strong performance in an online setting for a variety of ATARI games, directly by learning from the raw pixels of the video. Due to the reason that the Q-learning algorithm can not find the optimal policy in the high dimension, so the DQN algorithm is introduced to overcome this problem. 
+As we disscussed in the classic alogrithms, the reward obtained is not stable or divergence when a nonlinear function approximator is used. A little change of the Q-values will greatly affect the policy. Thus, the data distribution and the correlations between the Q-values and the target values $R+\gamma \max_{a'} \mathcal{Q}(s',a')$ are varied. To address this issue, \citep{mnih2015human} have proposed two technique, experience replay and target Q-network.
+
+**Experience replay mechanism:** The algorithm first initializes a replay memory $\mathbf{D}$, i.e., the memory pool, with transitions $(s_t, a_t, r_t, s_{t+1})$, i.e., experiences, generated randomly, e.g., through using $\epsilon$-greedy policy. Then, the algorithm randomly selects samples, i.e., minibatches, of transitions from $\mathbf{D}$ to train the DNN. The Q-values obtained by the trained DNN will be used to obtain new experiences, i.e., transitions, and these experiences will be then stored in the memory pool $\mathbf{D}$. This mechanism allows the DNN trained more efficiently by using both old and new experiences. In addition, by using the experience replay, the transitions are more independent and identically distributed, and thus the correlations between observations can be removed.
+
+**Fixed target $Q$-network:** In the training process, the $\mathcal{Q}$-value will be shifted. Thus, the value estimations can be out of control if a constantly shifting set of values is used to update the $Q$-network. This leads to the destabilization of the algorithm. To address this issue, the target $Q$-network is used to update frequently but slowly the primary $Q$-networks' values. In this way, the correlations between the target and estimated $\mathcal{Q}$-values are significantly reduced, thereby stabilizing the algorithm.	
+
+
+The DQL algorithm with experience replay and fixed target $Q$-network is presented in Algorithm~\ref{alg:DQL_ER_FTN}. DQL inherits and promotes advantages of both reinforcement and deep learning techniques, and thus it has a wide range of applications in practice such as game development~\cite{alphago}, transportation~\cite{lin2018efficient}, and robotics~\cite{gu2017deep}.
+
+
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{algorithm}[!]
+	\caption{The DQL Algorithm with Experience Replay and Fixed Target $Q$-Network}
+	\label{alg:DQL_ER_FTN}
+	\begin{algorithmic}[1]
+		\STATE Initialize replay memory $\mathbf{D}$.
+		\STATE Initialize the $Q$-network $\mathbf{Q}$ with random weights $\boldsymbol{\theta}$.
+		\STATE Initialize the target $Q$-network $\hat{\mathbf{Q}}$ with random weights $\boldsymbol{\theta'}$.
+		\FOR{\textit{episode=1 to T}}
+		\STATE With probability $\epsilon$ select a random action $a_t$, otherwise select $a_t=\arg \max \mathcal{Q}^*(s_t, a_t, \boldsymbol{\theta})$.
+		\STATE Perform action $a_t$ and observe immediate reward $r_t$ and next state $s_{t+1}$.
+		\STATE Store transition $(s_t, a_t, r_t, s_{t+1})$ in $\mathbf{D}$.
+		\STATE Select randomly samples c$(s_j, a_j, r_j, s_{j+1})$ from $\mathbf{D}$.
+		\STATE The weights of the neural network then are optimized by using stochastic gradient descent with respect to the network parameter $\boldsymbol{\theta}$ to minimize the loss:
+		\begin{equation}
+		\label{eq:DQL}
+		\Big[ r_j + \gamma\max_{a_{j+1}} \hat{\mathcal{Q}}(s_{j+1},a_{j+1};\boldsymbol{\theta'}) - \mathcal{Q}(s_j,a_j;\boldsymbol{\theta}) \Big]^2 .
+		\end{equation}
+		\STATE Reset $\hat{\mathbf{Q}} = \mathbf{Q}$ after every a fixed number of steps.
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+**dueling **ls.
+
 
 **double 
 
