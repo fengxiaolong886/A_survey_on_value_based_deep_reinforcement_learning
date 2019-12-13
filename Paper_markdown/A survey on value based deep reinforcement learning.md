@@ -73,6 +73,11 @@ $$
 Y_k^Q = r +\gamma \operatorname*{max}_{a' \in \mathcal A} Q(s',a';\theta_{k})
 $$
 where $\theta_k$ withs respect to  the parameters in the  $k_{th}$ iteration. The update is performed form the whole set of experience. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
 The Fitted Q-learning algorithm is given in algorithm-x:
 ---
 ---
@@ -95,7 +100,8 @@ slide 13
 **Fourier/wavelet bases""
 ---
 ---
----
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 **Neural Fitted Q-learning (NFQ)**
 
 In neural fitted Q-learning (NFQ) \citep{riedmiller2005neural},  we feed the state to the Q-network and output the probability of each action. This structure  can efficiently obtaining the computation of the maximum Q-value in state $s'$ . The Q-values are parameterized with a neural network $Q(s,a;\theta_k)$ where the parameters $\theta_k$ are updated by SGD to minimize the square loss:
@@ -120,19 +126,18 @@ The Neural Fitted Q-learning (NFQ) algorithm is given in algorithm-x:
 # Value-based Deep RL
 
 Here we specifically survey the deep Q-network (DQN) algorithm \citep{mnih2015human} which has achieved superhuman-level control when playing atari games from the pixels by using neural networks as function approximators. We will also survey various improvements of the DQN algorithm.
-**Deep Q-networks**
+
+Deep Q-networks
 
 %from 1810.07862
 Leveraging ideas from NFQ, the deep Q-network (DQN) algorithm introduced by \citet{mnih2015human} is able to obtain strong performance in an online setting for a variety of ATARI games, directly by learning from the raw pixels of the video. Due to the reason that the Q-learning algorithm can not find the optimal policy in the high dimension, so the DQN algorithm is introduced to overcome this problem. 
-As we disscussed in the classic alogrithms, the reward obtained is not stable or divergence when a nonlinear function approximator is used. A little change of the Q-values will greatly affect the policy. Thus, the data distribution and the correlations between the Q-values and the target values $R+\gamma \max_{a'} \mathcal{Q}(s',a')$ are varied. To address this issue, \citep{mnih2015human} have proposed two technique, experience replay and target Q-network.
+As we disscussed in the classic alogrithms, the reward obtained is not stable or divergence when a nonlinear function approximator is used. A little change of the Q-values will greatly affect the policy. Thus, the data distribution and the correlations between the Q-values and the target values $R+\gamma \max_{a'} \mathcal{Q}(s',a')$ are varied. To address this issue, \citep{mnih2015human} have proposed two methods, experience replay and target Q-network.
 
-**Experience replay mechanism:** The algorithm first initializes a replay memory $\mathbf{D}$, i.e., the memory pool, with transitions $(s_t, a_t, r_t, s_{t+1})$, i.e., experiences, generated randomly, e.g., through using $\epsilon$-greedy policy. Then, the algorithm randomly selects samples, i.e., minibatches, of transitions from $\mathbf{D}$ to train the DNN. The Q-values obtained by the trained DNN will be used to obtain new experiences, i.e., transitions, and these experiences will be then stored in the memory pool $\mathbf{D}$. This mechanism allows the DNN trained more efficiently by using both old and new experiences. In addition, by using the experience replay, the transitions are more independent and identically distributed, and thus the correlations between observations can be removed.
+**Experience replay mechanism:** The algorithm first initializes a replay memory $\mathbf{D}$, i.e., the memory pool, with transitions $(s_t, a_t, r_t, s_{t+1})$,which is collected by following an $\epsilon$-greedy policy. Then, the algorithm randomly choose samples by minibatches from replay meomory to train the deep neural network. The Q-values should come from the output of the network and will be used for the new experience generating process. This simple idea make the training process more efficiently. It also lead to more independent and identically distributed of the experience.
 
-**Fixed target $Q$-network:** In the training process, the $\mathcal{Q}$-value will be shifted. Thus, the value estimations can be out of control if a constantly shifting set of values is used to update the $Q$-network. This leads to the destabilization of the algorithm. To address this issue, the target $Q$-network is used to update frequently but slowly the primary $Q$-networks' values. In this way, the correlations between the target and estimated $\mathcal{Q}$-values are significantly reduced, thereby stabilizing the algorithm.	
+**Fixed target Q-network:** When the ntework was been trained,the Q-value trend to be shifted. Thus, the value estimations should become vworse. This leads to the unstable of the algorithm. To address this issue, the target Q-network is proposed to update frequently but slowly the main Q-networks values. In this way, the correlations between the target and estimated Q-values should be significantly reduced,that lead to more stable.	
 
-
-The DQL algorithm with experience replay and fixed target $Q$-network is presented in Algorithm~\ref{alg:DQL_ER_FTN}. DQL inherits and promotes advantages of both reinforcement and deep learning techniques, and thus it has a wide range of applications in practice such as game development~\cite{alphago}, transportation~\cite{lin2018efficient}, and robotics~\cite{gu2017deep}.
-
+The DQN algorithm is given in algorithm-x:
 
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 \begin{algorithm}[!]
@@ -158,17 +163,107 @@ The DQL algorithm with experience replay and fixed target $Q$-network is present
 \end{algorithm}
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+## Double DQN
 
-**dueling **ls.
+To address the over-estimations of action values~\cite{thrun1993issues}, which is introduced due to the maximum action. ~\cite{hasselt2010double} propose a solution using two Q-value functions, the two network simultaneously evaluate and choose action values through the loss function as follows: $\Big[ r_t + \gamma \mathcal{Q}_{2} \Big(s_{t+1}, \arg \underset{a_{t+1}}{\max} \mathcal{Q}_{1} \big(s_{t+1}, a_{t+1};\boldsymbol{\theta}_{1} \big); \boldsymbol{\theta}_{2} \Big) - \mathcal{Q}_{1}(s_t,a_t;\boldsymbol{\theta}_{1}) \Big]^2$
+
+We estimae the value of the greedy policy according to the first network, as parameterized by $\boldsymbol{\theta}_1$. The second network are used to evaluate fairly the value of the previous policy, and was parameterized by  $\boldsymbol{\theta}_2$.  The parameters of the second network are periodically synchronized with those of the first network.  
+
+The Double DQN algorithm is given in algorithm-x:
+
+## Dueling DQN
+
+ The Q-value function can explained to be the sum of the two part, one is the value function and the other is the advantange function.
+
+ $\mathcal{Q}(s,a) = {V}(s) + {A}(a)$.
+
+Stemming from the fact that in many MDPs, it is unnecessary to estimate both values, i.e., action and state values of Q-function $\mathcal{Q}(s,a)$, at the same time. For example, in many racing games, moving left or right matters if and only if the agent meets the obstacles or enemies. Inspired by this idea, the authors in~\cite{wang2016dueling} introduce an idea of using two streams, i.e., two sequences, of fully connected layers instead of using a single sequence with fully connected layers for the DQN. The two streams are constructed such that they are able to provide separate estimations on the action and state value functions, i.e., $\mathscr{V}(s)$ and $\mathscr{A}(a)$. Finally, the two streams are combined to generate a single output $\mathcal{Q}(s,a)$ as follows:
+\begin{equation}
+\begin{aligned}
+\mathcal{Q} (s,a;\boldsymbol{\alpha}, \boldsymbol{\beta}) =  \mathscr{V}(s;\boldsymbol{\beta}) + \Big( \mathscr{A} (s,a;\boldsymbol{\alpha}) - \frac{\sum_{a'} \mathscr{A} (s,a';\boldsymbol{\alpha})}{|\mathcal{A}|}		\Big) ,
+\end{aligned}
+\end{equation}
+where $\boldsymbol{\beta}$ and $\boldsymbol{\alpha}$ are the parameters of the two streams $\mathscr{V}(s;\boldsymbol{\beta})$ and $\mathscr{A} (s,a';\boldsymbol{\alpha})$, respectively. Here, $|\mathcal{A}|$ is the total number of actions in the action space $\mathcal{A}$. Then, the loss function is derived in the similar way to~(\ref{eq:DQL}) as follows: \\
+$\Big[ r_j + \gamma \underset{a_{j+1}}{\max} \hat{\mathcal{Q}}(s_{j+1},a_{j+1};\boldsymbol{\alpha'}, \boldsymbol{\beta'}) - \mathcal{Q}(s_j,a_j;\boldsymbol{\alpha}, \boldsymbol{\beta}) \Big]^2$. Through the simulation, the authors show that the proposed dueling DQN can outperform DDQN~\cite{hasselt2016deep} in 50 out of 57 learned Atari games. However, the proposed dueling architecture only clearly benefits for MDPs with large action spaces. For small state spaces, the performance of dueling DQL is even not as good as that of double DQL as shown in simulation results in~\cite{wang2016dueling}.
+
+# DQN With Prioritized Experience Replay
+
+Experience replay mechanism allows the reinforcement learning agent to remember and reuse experiences, i.e., transitions, from the past. In particular, transitions are uniformly sampled from the replay memory $\mathbf{D}$. However, this approach simply replays transitions at the same frequency as that the agent was originally experienced, regardless of their significance. Therefore, the authors in~\cite{schaul2015prioritized1} develop a framework for prioritizing experiences, so as to replay important transitions more frequently, and therefore learn more efficiently. Ideally, we want to sample more frequently those transitions from which there is much to learn. As a proxy for learning potential, the proposed Prioritized Experience Replay (PER)~\cite{schaul2015prioritized1} samples transitions with probability $p_t$ relative to the last encountered absolute error defined as follows:
+\begin{equation}
+p_t \varpropto \Big| r_j + \gamma\max_{a'} \hat{\mathcal{Q}}(s_{j+1},a';\boldsymbol{\theta'}) - \mathcal{Q}(s_j,a_j;\boldsymbol{\theta)}	\Big|^\omega,
+\end{equation}
+where $\omega$ is a hyper-parameter that determines the shape of the distribution. New transitions are inserted into the replay buffer with maximum priority, providing a bias towards recent transitions. Note that stochastic transitions may also be favoured, even when there is little left to learn about them. Through real experiments on many Atari games, the authors demonstrate that DQL with PER outperforms DQL with uniform replay on 41 out of 49 games. However, this solution is only appropriate to implement when we can find and define the important experiences in the replay memory $\mathbf{D}$.
+
+## Asynchronous Multi-step DQN
+
+Most of the $Q$-learning methods such as DQL and dueling DQL rely on the experience replay method. However, such kind of method has several drawbacks. For example, it uses more memory and computation resources per real interaction, and it requires off-policy learning algorithms that can update from data generated by an older policy. This limits the applications of DQL. Therefore, the authors in~\cite{mnih2016asynchronous} introduce a method using multiple agents to train the DNN in parallel. In particular, the authors propose a training procedure which utilizes asynchronous gradient decent updates from multiple agents at once. Instead of training one single agent that interacts with its environment, multiple agents are interacting with their own version of the environment simultaneously. After a certain amount of timesteps, accumulated gradient updates from an agent are applied to a global model, i.e., the DNN. These updates are asynchronous and lock free. In addition, to tradeoff between bias and variance in the policy gradient, the authors adopt $n$-step updates method~\cite{sutton1998reinforcement} to update the reward function. In particular, the truncated $n$-step reward function can be defined by $r_t^{(n)} = \underset{k=0}{\overset{n-1}{\sum}} \gamma^{(k)} r_{t+k+1}$. Thus, the alternative loss for each agent will be derived by:
+\begin{equation}
+\Big[ r_j^{(n)} + \gamma_j^{(n)} \max_{a'} \hat{\mathcal{Q}}(s_{j+n},a';\boldsymbol{\theta'}) - \mathcal{Q}(s_j,a_j;\boldsymbol{\theta}) \Big]^2 .
+\end{equation}
+
+The effects of training speed and quality of the proposed asynchronous DQL with multi-step learning are analyzed for various reinforcement learning methods, e.g., 1-step $Q$-learning, 1-step SARSA, and n-step $Q$-learning. They show that asynchronous updates have a stabilizing effect on policy and value updates. Also, the proposed method outperforms the current state-of-the-art algorithms on the Atari games while training for half of the time on a single multi-core CPU instead of a GPU. As a result, some recent applications of asynchronous DQL have been developed for handover control problems in wireless systems~\cite{wang2018handover}
 
 
-**double 
 
+## Distributional  DQN
+
+All aforementioned methods use the Bellman equation to approximate the expected value of future rewards. However, if the environment is stochastic in nature and the future rewards follow multimodal distribution, choosing actions based on expected value may not lead to the optimal outcome. For example, we know that the expected transmission time of a packet in a wireless network is 20 minutes. However, this information may not be so meaningful because it may overestimate the transmission time most of the time. For example, the expected transmission time is calculated based on the normal transmissions (without collisions) and the interference transmissions (with collisions). Although the interference transmissions are very rare to happen, but it takes a lot of time. Then, the estimation about the expected transmission is overestimated most of the time. This makes estimations not useful for the DQL algorithms.
+
+
+Thus, the authors in~\cite{bellemare2017distributional} introduce a solution using distributional reinforcement learning to update $Q$-value function based on its distribution rather than its expectation. In particular, let $\mathcal{Z}(s,a)$ be the return obtained by starting from state $s$, executing action $a$, and following the current policy, then $\mathcal{Q}(s,a) = \mathbb{E}[\mathcal{Z}(s,a)]$. Here, $\mathcal{Z}$ represents the distribution of future rewards, which is no longer a scalar quantity like $Q$-values. Then we obtain the distributional version of Bellman equation as follows: $\mathcal{Z}(s,a) = r + \gamma \mathcal{Z}(s',a')$. For example, if we use the DQN and extract an experience $(s,a,r,s')$ from the replay buffer, then the sample of the target distribution is $\mathcal{Z}(s,a) = r + \gamma \mathcal{Z}(s',a^*)$ with $a^* = \arg \underset{a'}{\max} \mathcal{Q}(s,a')$. Although the proposed distributional deep Q-learning is demonstrated to outperform the conventional DQL~\cite{mnih2015human1} on many Atari 2600 Games (45 out of 57 games), its performance relies much on the distribution function $\mathcal{Z}$. If $\mathcal{Z}$ is well defined, the performance of distributional deep $Q$-learning is much more significant than that of the DQL. Otherwise, its performance is even worse than that of the DQL.
+
+##  DQN with Noisy Nets
+
+In~\cite{fortunato2018noisy1}, the authors introduce Noisy Net, a type of neural network whose bias and weights are iteratively perturbed during training by a parametric function of the noise. This network basically adds the Gaussian noise to the last (fully-connected) layers of the network. The parameters of this noise can be adjusted by the model during training, which allows the agent to decide when and in what proportion it wants to introduce the uncertainty to its weights. In particular, to implement the noisy network, we first replace the $\epsilon$-greedy policy by a randomized action-value function. Then, the fully connected layers of the value network are parameterized as a noisy network, where the parameters are drawn from the noisy network parameter distribution after every replay step. For replay, the current noisy network parameter sample is held fixed across the batch. Since the DQL takes one step of optimization for every action step, the noisy network parameters are re-sampled before every action. After that, the loss function can be updated as follows:
+\begin{equation}
+\mathcal{L} = \mathbb{E} \Big[ \mathbb{E}_{(s,a,r,s') \thicksim \mathbf{D}}	\big[ r + \gamma \max_{a' \in \mathcal{A}} \hat{\mathcal{Q}} (s',a',\epsilon'; \boldsymbol{\theta'}) - \mathcal{Q}(s,a,\epsilon;\boldsymbol{\theta}) \big]	\Big] ,
+\end{equation}
+where the outer and inner expectations are with respect to distributions of the noise variables $\epsilon$ and $\epsilon'$ for the noisy value functions $\hat{\mathcal{Q}} (s',a',\epsilon'; \boldsymbol{\theta'})$ and $\mathcal{Q}(s,a,\epsilon;\boldsymbol{\theta})$, respectively.
+
+Through experimental results, the authors demonstrate that by adding the Gaussian noise layer to the DNN, the performance of conventional DQL~\cite{mnih2015human1}, dueling DQL~\cite{wang2016dueling}, and asynchronous DQL~\cite{mnih2016asynchronous} can be significantly improved for a wide range of Atari games. However, the impact of noise to the performance of the deep DQL algorithms is still under debating in the literature, and thus analysis on the impact of noise layer requires further investigations.
+
+
+
+\begin{table*}[!]
+	\centering
+	\caption{Performance comparison among DQL algorithms}
+	\label{tab:DQL_Comparisons}
+	\begin{tabular}{||c||c||c||c||c||} \hline
+		\textbf{DQL Algorithms} & \textbf{No Operations} & \textbf{Human Starts} & \textbf{Publish} & \textbf{Developer} \\ \hline \hline
+		DQL & 79\% & 68\% & Nature 2015~\cite{mnih2015human1} & Google DeepMind \\ \hline
+		DDQL & 117\% & 110\%  & AAAI 2016~\cite{hasselt2016deep} & Google DeepMind \\ \hline
+		Prioritized DDQL & 140\% & 128\% & ICLR 2015~\cite{schaul2015prioritized1} & Google DeepMind \\ \hline
+		Dueling DDQL & 151\% & 117\% & ICML 2016~\cite{wang2016dueling} & Google DeepMind\\ \hline
+		Asynchronous DQL & - & 116\% & ICML 2016~\cite{mnih2016asynchronous} & Google DeepMind \\ \hline
+		Distributional DQL & 164\% & 125\% & ICML 2017~\cite{bellemare2017distributional} & Google DeepMind \\ \hline	
+		Noisy Nets DQL & 118\% & 102\% & ICLR 2018~\cite{fortunato2018noisy1} &  Google DeepMind \\ \hline
+		\textbf{Rainbow} & \textbf{223\%} & \textbf{153\%} & AAAI 2018~\cite{hessel2018rainbow} & Google DeepMind \\ \hline
+	\end{tabular}
+\end{table*}
+
+## Rainbow DQN
+
+In~\cite{hessel2018rainbow}, the authors propose a solution which integrates all advantages of seven aforementioned solutions (including DQL) into a single learning agent, called Rainbow DQL. In particular, this algorithm first defines the loss function based on the asynchronous multi-step and distributional DQL. Then, the authors combine the multi-step distributional loss with double $Q$-learning by using the greedy action in $s_{t+n}$ selected according to the $Q$-network as the bootstrap action $a^*_{t+n}$, and evaluate the action by using the target network.
+%After that, the algorithm combines the multi-step distributional loss with double $Q$-learning by using the greedy action in $s_{t+n}$ selected according to the neural network as the bootstrap action $a^*_{t+n}$, and evaluating the action using the target network.
+
+In standard proportional prioritized replay~\cite{schaul2015prioritized1} technique, the absolute TD-error is used to prioritize the transitions. Here, TD-error at a time slot is the error in the estimate made at the time slot. However, in the proposed Rainbow DQL algorithm, all distributional Rainbow variants prioritize transitions by the Kullbeck-Leibler (KL) loss because this loss may be more robust to noisy stochastic environment. Alternatively, the dueling architecture of DNNs is presented in~\cite{wang2016dueling}. Finally, the Noisy Net layer~\cite{hessel2018rainbow} is used to replace all linear layers in order to reduce the number of independent noise variables. Through simulation, the authors show that this is the most advanced technique which outperforms almost all current DQL algorithms in the literature over 57 Atari 2600 games.
+
+
+In Table~\ref{tab:DQL_Comparisons}, we summarize the DQL algorithms and their performance under the parameter settings used in~\cite{hessel2018rainbow}. As observed in Table~\ref{tab:DQL_Comparisons}, all of the DQL algorithms have been developed by Google DeepMind based on the original work in~\cite{mnih2015human1}. So far, through experimental results on Atari 2600 games, the Rainbow DQL presents very impressive results over all other DQL algorithms. However, more experiments need to be further conducted in different domains to confirm the real efficiency of the Rainbow DQL algorithm.
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 **averaged deep q-network
 
-
 # problem
+
 ## overestimation
+
 slide14
 
 
