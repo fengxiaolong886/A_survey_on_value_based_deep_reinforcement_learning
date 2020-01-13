@@ -1,0 +1,222 @@
+
+\newcommand{\Exp}{\mathds{E}}
+\newcommand{\Expk}{\mathds{E}_{k}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Ind}{\mathds{1}}
+\newcommand{\Rmax}{R_{\rm max}}
+\newcommand{\riskyopt}{\succcurlyeq_{\rm ro}}
+\newcommand{\cid}{\succcurlyeq_{\rm CID}}
+\newcommand{\so}{\succcurlyeq_{\rm so}}
+\newcommand{\single}{\succcurlyeq_{\rm sc}}
+\newcommand{\ssd}{\succcurlyeq_{\rm ssd}}
+\newcommand{\pp}{\mathrel{+}\mathrel{+}}
+\newcommand{\Xc}{\mathcal{X}}
+\newcommand{\Yc}{\mathcal{Y}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\Qc}{\mathcal{Q}}
+\newcommand{\Ec}{\mathcal{E}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Rc}{\mathcal{R}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Mc}{\mathcal{M}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Vc}{\mathcal{V}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\A}{\mathcal A}
+\renewcommand{\S}{\mathcal S}
+\newcommand{\X}{\mathcal X}
+\newcommand{\D}{\mathcal D}
+\newcommand{\G}{\mathcal G}
+\newcommand{\K}{\mathcal K}
+\newcommand{\calP}{\mathcal P}
+\newcommand{\calI}{\mathcal I}
+\newcommand{\barH}{\overline{H}}
+\newcommand{\hh}{\hat h}
+\renewcommand{\L}{\mathcal L}
+\newcommand{\Hyp}{\mathcal H}
+\newcommand{\Y}{\mathcal Y}
+\newcommand{\B}{\mathcal B}
+\newcommand{\C}{\mathcal C}
+\newcommand{\F}{\mathcal F}
+\newcommand{\E}{\mathbb E}
+\newcommand{\W}{\mathcal W}
+\newcommand{\Z}{\mathcal Z}
+\newcommand{\calE}{\mathcal E}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\Cov}{\textnormal{Cov}}
+\newcommand{\V}{\mathbb V}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\I}{\mathbb I}
+\newcommand{\N}{\mathcal N}
+%\newcommand{\M}{\mathcal M}
+\newcommand{\tM}{\widetilde{M}}
+%\newcommand{\T}{\mathcal{T}}
+\newcommand{\balpha}{\boldsymbol \alpha}
+\newcommand{\bmu}{\boldsymbol \mu}
+\newcommand{\bSigma}{\boldsymbol \Sigma}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bhP}{\widehat{\mathbf{P}}}
+\newcommand{\bT}{\boldsymbol{T}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bY}{\boldsymbol{Y}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\MV}{\textnormal{MV}}
+\newcommand{\hMV}{\widehat{\textnormal{MV}}}
+\newcommand{\barmu}{\bar\mu}
+\newcommand{\hpi}{\hat\pi}
+\newcommand{\tDelta}{\widetilde{\Delta}}
+\newcommand{\hmu}{\widehat{\mu}}
+\newcommand{\hrho}{\hat\rho}
+\newcommand{\heps}{\hat\eps}
+\newcommand{\hnu}{\hat\nu}
+\newcommand{\trho}{\tilde\rho}
+\newcommand{\brho}{\bar\rho}
+\newcommand{\hM}{\widehat{M}}
+\newcommand{\hN}{\widehat{N}}
+\newcommand{\tmu}{\widetilde{\mu}}
+\newcommand{\tpi}{\widetilde{\pi}}
+\newcommand{\barvar}{\bar\sigma^2}
+%\newcommand{\hvar}{\hat\sigma^2}
+\newcommand{\tvar}{\tilde\sigma^2}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\htheta}{\hat{\theta}}
+\newcommand{\hR}{\widehat{\mathcal{R}}}
+\newcommand{\tR}{\widetilde{\mathcal R}}
+%\newcommand{\var}{\sigma^2}
+\newcommand{\invdelta}{1/\delta}
+\newcommand{\boldR}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\mvlcb}{\textnormal{\texttt{MV-LCB }}}
+\newcommand{\ucb}{\textnormal{\textsl{UCB }}}
+\newcommand{\ucbv}{\textnormal{\textsl{UCB-V }}}
+\newcommand{\mvlcbt}{\textnormal{\texttt{MV-LCB(t) }}}
+\newcommand{\mom}{\textnormal{MoM}}
+\newcommand{\me}{\textnormal{ME}}
+\newcommand{\mt}{\textnormal{MT}}
+\newcommand{\eh}{1/(1-\gamma)}
+\newcommand{\ehf}{\frac1{1-\gamma}}
+
+
+\newcommand{\cvar}{\textnormal{C}}
+\newcommand{\hcvar}{\widehat{\textnormal{C}}}
+\newcommand{\hvar}{\widehat{\textnormal{V}}}
+
+
+\newcommand{\avg}[2]{\frac{1}{#2} \sum_{#1=1}^{#2}}
+\newcommand{\hDelta}{\widehat{\Delta}}
+\newcommand{\hGamma}{\widehat{\Gamma}}
+
+
+
+
+%\newcommand{\todo}[1]{{\bf[#1]}}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+
+\newcommand{\beqan}{\begin{eqnarray*}}
+\newcommand{\eeqan}{\end{eqnarray*}}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\E}{\mathbb{E}}
+\newcommand{\Esp}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}}
+\newcommand{\indic}[1]{\mathbb{I}\{#1\}}
+\newcommand{\EE}[1]{\E\left[#1\right]}
+%\newcommand{\Prob}[1]{\P\left(#1\right)}
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde}
+
+\let\R\undefined %sometimes it is defined as something I don't know
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Normal}{\mathcal{N}}
+
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+
+\newcommand{\cl}[2][ (]{
+\ifthenelse{\equal{#1}{ (}}{\left (#2\right)}{}
+\ifthenelse{\equal{#1}{[}}{\left[#2\right]}{}
+\ifthenelse{\equal{#1}{\{}}{\left\{#2\right\}}{}
+}
+
+\newcommand{\inset}[3][C]{
+\ifthenelse{\equal{#1}{C}}{{#2}\in\mathcal{#3}}{}
+\ifthenelse{\equal{#1}{T}}{{#2}\in{#3}}{}
+}
+
+\newcommand{\ESum}[4][C]
+{\ifthenelse{\equal{#1}{C}}{\underset{\inset{#3}{#4}}{\sum}#2}{}
+ \ifthenelse{\equal{#1}{T}}{\underset{\inset[N]{#3}{#4}}{\sum}#2}{}
+\ifthenelse{\equal{#1}{U}}{\overset{#4}{\underset{#3}{\sum}}#2}{}
+\ifthenelse{\equal{#1}{X}}{\sideset{}{_{#3}^{#4}}{\sum}#2}{}
+\ifthenelse{\equal{#1}{S}}{\sideset{}{_{#3}^{#4}}{\sum}#2}{}
+\ifthenelse{\equal{#1}{O}}{{\underset{ (#3,#4)}{\sum}}#2}{}
+\ifthenelse{\equal{#1}{I}}{{\underset{#3}{\sum}}#2}{}}
+
+\newcommand{\VF}[2][N]{
+\ifthenelse{\equal{#1}{L}}{V^{\pi}_{\lambda} (#2)}{}
+\ifthenelse{\equal{#1}{C}}{V{^{\pi} (#2)}}{}
+\ifthenelse{\equal{#1}{T}}{V^*_{\bar{\pi}} (#2)}{}
+\ifthenelse{\equal{#1}{CO}}{V{^{*} (#2)}}{}
+\ifthenelse{\equal{#1}{Mx}}{V^{\pi}_{\infty} (#2)}{}
+\ifthenelse{\equal{#1}{Mxo}}{V^{\pi^*}_{\infty} (#2)}{}
+\ifthenelse{\equal{#1}{Mn}}{V^{\pi}_{-\infty} (#2)}{}
+\ifthenelse{\equal{#1}{Mno}}{V^{\pi^*}_{-\infty} (#2)}{}
+}
+
+\newcommand{\Eval}[1][null]{
+\ifthenelse{\equal{#1}{null}}{\mathbb{E}}{\mathbb{E}_{#1}}
+}
+
+\newcommand{\M}[1][]{
+\mathcal{M}_{#1}
+}
+
+
+\newcommand{\qv}[1][null]{
+\ifthenelse{\equal{#1}{null}}{Q^*}{Q^{#1}}
+}
+
+\newcommand{\T}[1][null]{
+\ifthenelse{\equal{#1}{null}}{\mathcal{T}}{\mathcal{T}^{#1}}
+}
+
+
+
+\newcommand{\subLim}[2]{
+\underset{#1\rightarrow#2}{\lim}
+}
+
+\newcommand{\Norm}[2][]
+{
+\left\|#2\right\|_{#1}
+}
+
+\newcommand{\bldsym}{\boldsymbol}
+
+
+% Propositions
+%\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{definition}{Definition}
+%\newtheorem{theorem}{Theorem}
+%%\newtheorem{proof}{Proof}
+
+% Misc
+\newcommand{\TODO}[1]{(\textbf{TODO: {#1}})}
+%\newcommand{\remark}[1]{\textbf{Remark #1.}}
+

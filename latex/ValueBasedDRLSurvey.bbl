@@ -1,0 +1,385 @@
+\begin{thebibliography}{45}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Andrychowicz et~al., 2017]{andrychowicz2017hindsight}
+Andrychowicz, M., Wolski, F., Ray, A., Schneider, J., Fong, R., Welinder, P.,
+  McGrew, B., Tobin, J., Abbeel, O.~P., and Zaremba, W. (2017).
+\newblock Hindsight experience replay.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  5048--5058.
+
+\bibitem[Anschel et~al., 2017]{anschel2017averaged}
+Anschel, O., Baram, N., and Shimkin, N. (2017).
+\newblock Averaged-dqn: Variance reduction and stabilization for deep
+  reinforcement learning.
+\newblock In {\em Proceedings of the 34th International Conference on Machine
+  Learning-Volume 70}, pages 176--185. JMLR. org.
+
+\bibitem[Arulkumaran et~al., 2017]{arulkumaran2017brief}
+Arulkumaran, K., Deisenroth, M.~P., Brundage, M., and Bharath, A.~A. (2017).
+\newblock A brief survey of deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1708.05866}.
+
+\bibitem[Bahdanau et~al., 2016]{bahdanau2016actor}
+Bahdanau, D., Brakel, P., Xu, K., Goyal, A., Lowe, R., Pineau, J., Courville,
+  A., and Bengio, Y. (2016).
+\newblock An actor-critic algorithm for sequence prediction.
+\newblock {\em arXiv preprint arXiv:1607.07086}.
+
+\bibitem[Baird, 1995]{baird1995residual}
+Baird, L. (1995).
+\newblock Residual algorithms: Reinforcement learning with function
+  approximation.
+\newblock In {\em Machine Learning Proceedings 1995}, pages 30--37. Elsevier.
+
+\bibitem[Bellemare et~al., 2017]{bellemare2017distributional}
+Bellemare, M.~G., Dabney, W., and Munos, R. (2017).
+\newblock A distributional perspective on reinforcement learning.
+\newblock In {\em Proceedings of the 34th International Conference on Machine
+  Learning-Volume 70}, pages 449--458. JMLR. org.
+
+\bibitem[Bellemare et~al., 2013]{bellemare2013arcade}
+Bellemare, M.~G., Naddaf, Y., Veness, J., and Bowling, M. (2013).
+\newblock The arcade learning environment: An evaluation platform for general
+  agents.
+\newblock {\em Journal of Artificial Intelligence Research}, 47:253--279.
+
+\bibitem[Bellman and Kalaba, 1962]{bellman1962dynamic}
+Bellman, R. and Kalaba, R. (1962).
+\newblock Dynamic programming applied to control processes governed by general
+  functional equations.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 48(10):1735.
+
+\bibitem[Dabney et~al., 2018]{dabney2018distributional}
+Dabney, W., Rowland, M., Bellemare, M.~G., and Munos, R. (2018).
+\newblock Distributional reinforcement learning with quantile regression.
+\newblock In {\em Thirty-Second AAAI Conference on Artificial Intelligence}.
+
+\bibitem[Deng et~al., 2016]{deng2016deep}
+Deng, Y., Bao, F., Kong, Y., Ren, Z., and Dai, Q. (2016).
+\newblock Deep direct reinforcement learning for financial signal
+  representation and trading.
+\newblock {\em IEEE transactions on neural networks and learning systems},
+  28(3):653--664.
+
+\bibitem[Duryea et~al., 2016]{duryea2016exploring}
+Duryea, E., Ganger, M., and Hu, W. (2016).
+\newblock Exploring deep reinforcement learning with multi q-learning.
+\newblock {\em Intelligent Control and Automation}, 7(04):129.
+
+\bibitem[Fortunato et~al., 2017]{fortunato2017noisy}
+Fortunato, M., Azar, M.~G., Piot, B., Menick, J., Osband, I., Graves, A., Mnih,
+  V., Munos, R., Hassabis, D., Pietquin, O., et~al. (2017).
+\newblock Noisy networks for exploration.
+\newblock {\em arXiv preprint arXiv:1706.10295}.
+
+\bibitem[Fujimoto et~al., 2018]{fujimoto2018addressing}
+Fujimoto, S., van Hoof, H., and Meger, D. (2018).
+\newblock Addressing function approximation error in actor-critic methods.
+\newblock {\em arXiv preprint arXiv:1802.09477}.
+
+\bibitem[Gandhi et~al., 2017]{gandhi2017learning}
+Gandhi, D., Pinto, L., and Gupta, A. (2017).
+\newblock Learning to fly by crashing.
+\newblock In {\em 2017 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems (IROS)}, pages 3948--3955. IEEE.
+
+\bibitem[Goodfellow et~al., 2016]{goodfellow2016deep}
+Goodfellow, I., Bengio, Y., and Courville, A. (2016).
+\newblock {\em Deep learning}.
+\newblock MIT press.
+
+\bibitem[Gordon, 1996]{gordon1996stable}
+Gordon, G.~J. (1996).
+\newblock Stable fitted reinforcement learning.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1052--1058.
+
+\bibitem[Gordon, 1999]{gordon1999approximate}
+Gordon, G.~J. (1999).
+\newblock Approximate solutions to markov decision processes.
+
+\bibitem[Gosavi, 2009]{gosavi2009reinforcement}
+Gosavi, A. (2009).
+\newblock Reinforcement learning: A tutorial survey and recent advances.
+\newblock {\em INFORMS Journal on Computing}, 21(2):178--192.
+
+\bibitem[Gu et~al., 2017]{gu2017deep}
+Gu, S., Holly, E., Lillicrap, T., and Levine, S. (2017).
+\newblock Deep reinforcement learning for robotic manipulation with
+  asynchronous off-policy updates.
+\newblock In {\em 2017 IEEE international conference on robotics and automation
+  (ICRA)}, pages 3389--3396. IEEE.
+
+\bibitem[Gu et~al., 2016]{gu2016continuous}
+Gu, S., Lillicrap, T., Sutskever, I., and Levine, S. (2016).
+\newblock Continuous deep q-learning with model-based acceleration.
+\newblock In {\em International Conference on Machine Learning}, pages
+  2829--2838.
+
+\bibitem[Haarnoja et~al., 2018]{haarnoja2018soft}
+Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. (2018).
+\newblock Soft actor-critic: Off-policy maximum entropy deep reinforcement
+  learning with a stochastic actor.
+\newblock {\em arXiv preprint arXiv:1801.01290}.
+
+\bibitem[Hausknecht and Stone, 2015]{hausknecht2015deep}
+Hausknecht, M. and Stone, P. (2015).
+\newblock Deep recurrent q-learning for partially observable mdps.
+\newblock In {\em 2015 AAAI Fall Symposium Series}.
+
+\bibitem[Jaques et~al., 2017]{jaques2017sequence}
+Jaques, N., Gu, S., Bahdanau, D., Hern{\'a}ndez-Lobato, J.~M., Turner, R.~E.,
+  and Eck, D. (2017).
+\newblock Sequence tutor: Conservative fine-tuning of sequence generation
+  models with kl-control.
+\newblock In {\em Proceedings of the 34th International Conference on Machine
+  Learning-Volume 70}, pages 1645--1654. JMLR. org.
+
+\bibitem[Kaelbling et~al., 1996]{kaelbling1996reinforcement}
+Kaelbling, L.~P., Littman, M.~L., and Moore, A.~W. (1996).
+\newblock Reinforcement learning: A survey.
+\newblock {\em Journal of artificial intelligence research}, 4:237--285.
+
+\bibitem[LeCun et~al., 2015]{lecun2015deep}
+LeCun, Y., Bengio, Y., and Hinton, G. (2015).
+\newblock Deep learning.
+\newblock {\em nature}, 521(7553):436--444.
+
+\bibitem[Leibfried et~al., 2017]{leibfried2017information}
+Leibfried, F., Grau-Moya, J., and Bou-Ammar, H. (2017).
+\newblock An information-theoretic optimality principle for deep reinforcement
+  learning.
+\newblock {\em arXiv preprint arXiv:1708.01867}.
+
+\bibitem[Levine et~al., 2017]{levine2017shallow}
+Levine, N., Zahavy, T., Mankowitz, D.~J., Tamar, A., and Mannor, S. (2017).
+\newblock Shallow updates for deep reinforcement learning.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  3135--3145.
+
+\bibitem[Lillicrap et~al., 2015]{lillicrap2015continuous}
+Lillicrap, T.~P., Hunt, J.~J., Pritzel, A., Heess, N., Erez, T., Tassa, Y.,
+  Silver, D., and Wierstra, D. (2015).
+\newblock Continuous control with deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1509.02971}.
+
+\bibitem[Lipton et~al., 2016a]{lipton2016combating}
+Lipton, Z.~C., Azizzadenesheli, K., Kumar, A., Li, L., Gao, J., and Deng, L.
+  (2016a).
+\newblock Combating reinforcement learning's sisyphean curse with intrinsic
+  fear.
+\newblock {\em arXiv preprint arXiv:1611.01211}.
+
+\bibitem[Lipton et~al., 2016b]{lipton2016efficient}
+Lipton, Z.~C., Gao, J., Li, L., Li, X., Ahmed, F., and Deng, L. (2016b).
+\newblock Efficient exploration for dialogue policy learning with bbq networks
+  \& replay buffer spiking.
+\newblock {\em arXiv preprint arXiv:1608.05081}, 3.
+
+\bibitem[Mahajan and Tulabandhula, 2017]{mahajan2017symmetry}
+Mahajan, A. and Tulabandhula, T. (2017).
+\newblock Symmetry learning for function approximation in reinforcement
+  learning.
+\newblock {\em arXiv preprint arXiv:1706.02999}.
+
+\bibitem[Matteo et~al., 2017]{matteo2017rainbow}
+Matteo, H., Joseph, M., Hado, H., Tom, S., Georg, O., Will, D., Dan, H., Bilal,
+  P., Mohammad, A., and David, S. (2017).
+\newblock Rainbow: Combining improvements in deep reinforcement learning.
+\newblock {\em arXiv: 1710.02298 v1 [cs. AI]}.
+
+\bibitem[Mnih et~al., 2016]{mnih2016asynchronous}
+Mnih, V., Badia, A.~P., Mirza, M., Graves, A., Lillicrap, T., Harley, T.,
+  Silver, D., and Kavukcuoglu, K. (2016).
+\newblock Asynchronous methods for deep reinforcement learning.
+\newblock In {\em International conference on machine learning}, pages
+  1928--1937.
+
+\bibitem[Mnih et~al., 2013]{mnih2013playing}
+Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra,
+  D., and Riedmiller, M. (2013).
+\newblock Playing atari with deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1312.5602}.
+
+\bibitem[Mnih et~al., 2015]{mnih2015human}
+Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A.~A., Veness, J., Bellemare,
+  M.~G., Graves, A., Riedmiller, M., Fidjeland, A.~K., Ostrovski, G., et~al.
+  (2015).
+\newblock Human-level control through deep reinforcement learning.
+\newblock {\em Nature}, 518(7540):529.
+
+\bibitem[Morimura et~al., 2010]{morimura2010nonparametric}
+Morimura, T., Sugiyama, M., Kashima, H., Hachiya, H., and Tanaka, T. (2010).
+\newblock Nonparametric return distribution approximation for reinforcement
+  learning.
+\newblock In {\em Proceedings of the 27th International Conference on Machine
+  Learning (ICML-10)}, pages 799--806.
+
+\bibitem[Mossalam et~al., 2016]{mossalam2016multi}
+Mossalam, H., Assael, Y.~M., Roijers, D.~M., and Whiteson, S. (2016).
+\newblock Multi-objective deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1610.02707}.
+
+\bibitem[Nair et~al., 2015]{nair2015massively}
+Nair, A., Srinivasan, P., Blackwell, S., Alcicek, C., Fearon, R., De~Maria, A.,
+  Panneershelvam, V., Suleyman, M., Beattie, C., Petersen, S., et~al. (2015).
+\newblock Massively parallel methods for deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1507.04296}.
+
+\bibitem[Osband et~al., 2016]{osband2016deep}
+Osband, I., Blundell, C., Pritzel, A., and Van~Roy, B. (2016).
+\newblock Deep exploration via bootstrapped dqn.
+\newblock In {\em Advances in neural information processing systems}, pages
+  4026--4034.
+
+\bibitem[Pan et~al., 2017]{pan2017virtual}
+Pan, X., You, Y., Wang, Z., and Lu, C. (2017).
+\newblock Virtual to real reinforcement learning for autonomous driving.
+\newblock {\em arXiv preprint arXiv:1704.03952}.
+
+\bibitem[Pinto et~al., 2017]{pinto2017asymmetric}
+Pinto, L., Andrychowicz, M., Welinder, P., Zaremba, W., and Abbeel, P. (2017).
+\newblock Asymmetric actor critic for image-based robot learning.
+\newblock {\em arXiv preprint arXiv:1710.06542}.
+
+\bibitem[Puterman, 2014]{puterman2014markov}
+Puterman, M.~L. (2014).
+\newblock {\em Markov Decision Processes.: Discrete Stochastic Dynamic
+  Programming}.
+\newblock John Wiley \& Sons.
+
+\bibitem[Ranzato et~al., 2015]{ranzato2015sequence}
+Ranzato, M., Chopra, S., Auli, M., and Zaremba, W. (2015).
+\newblock Sequence level training with recurrent neural networks.
+\newblock {\em arXiv preprint arXiv:1511.06732}.
+
+\bibitem[Riedmiller, 2005]{riedmiller2005neural}
+Riedmiller, M. (2005).
+\newblock Neural fitted q iteration--first experiences with a data efficient
+  neural reinforcement learning method.
+\newblock In {\em European Conference on Machine Learning}, pages 317--328.
+  Springer.
+
+\bibitem[Roijers et~al., 2015]{roijers2015computing}
+Roijers, D.~M., Whiteson, S., and Oliehoek, F.~A. (2015).
+\newblock Computing convex coverage sets for faster multi-objective
+  coordination.
+\newblock {\em Journal of Artificial Intelligence Research}, 52:399--443.
+
+\bibitem[Rowland et~al., 2018]{rowland2018analysis}
+Rowland, M., Bellemare, M.~G., Dabney, W., Munos, R., and Teh, Y.~W. (2018).
+\newblock An analysis of categorical distributional reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1802.08163}.
+
+\bibitem[Schaul et~al., 2015]{schaul2015prioritized}
+Schaul, T., Quan, J., Antonoglou, I., and Silver, D. (2015).
+\newblock Prioritized experience replay.
+\newblock {\em arXiv preprint arXiv:1511.05952}.
+
+\bibitem[Schmidhuber, 2015]{schmidhuber2015deep}
+Schmidhuber, J. (2015).
+\newblock Deep learning in neural networks: An overview.
+\newblock {\em Neural networks}, 61:85--117.
+
+\bibitem[Schulman et~al., 2015]{schulman2015trust}
+Schulman, J., Levine, S., Abbeel, P., Jordan, M., and Moritz, P. (2015).
+\newblock Trust region policy optimization.
+\newblock In {\em International conference on machine learning}, pages
+  1889--1897.
+
+\bibitem[Schulman et~al., 2017]{schulman2017proximal}
+Schulman, J., Wolski, F., Dhariwal, P., Radford, A., and Klimov, O. (2017).
+\newblock Proximal policy optimization algorithms.
+\newblock {\em arXiv preprint arXiv:1707.06347}.
+
+\bibitem[Sendonaris and Dulac-Arnold, 2017]{sendonaris2017learning}
+Sendonaris, A. and Dulac-Arnold, C.~G. (2017).
+\newblock Learning from demonstrations for real world reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1704.03732}.
+
+\bibitem[Silver et~al., 2016]{silver2016mastering}
+Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche,
+  G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M.,
+  et~al. (2016).
+\newblock Mastering the game of go with deep neural networks and tree search.
+\newblock {\em nature}, 529(7587):484.
+
+\bibitem[Silver et~al., 2018]{silver2018general}
+Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A.,
+  Lanctot, M., Sifre, L., Kumaran, D., Graepel, T., et~al. (2018).
+\newblock A general reinforcement learning algorithm that masters chess, shogi,
+  and go through self-play.
+\newblock {\em Science}, 362(6419):1140--1144.
+
+\bibitem[Sorokin et~al., 2015]{sorokin2015deep}
+Sorokin, I., Seleznev, A., Pavlov, M., Fedorov, A., and Ignateva, A. (2015).
+\newblock Deep attention recurrent q-network.
+\newblock {\em arXiv preprint arXiv:1512.01693}.
+
+\bibitem[Sutton and Barto, 2018]{sutton2018reinforcement}
+Sutton, R.~S. and Barto, A.~G. (2018).
+\newblock {\em Reinforcement learning: An introduction}.
+\newblock MIT press.
+
+\bibitem[Sutton et~al., 2000]{sutton2000policy}
+Sutton, R.~S., McAllester, D.~A., Singh, S.~P., and Mansour, Y. (2000).
+\newblock Policy gradient methods for reinforcement learning with function
+  approximation.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1057--1063.
+
+\bibitem[Szepesv{\'a}ri, 2010]{szepesvari2010algorithms}
+Szepesv{\'a}ri, C. (2010).
+\newblock Algorithms for reinforcement learning.
+\newblock {\em Synthesis lectures on artificial intelligence and machine
+  learning}, 4(1):1--103.
+
+\bibitem[Taitler and Shimkin, 2017]{taitler2017learning}
+Taitler, A. and Shimkin, N. (2017).
+\newblock Learning control for air hockey striking using deep reinforcement
+  learning.
+\newblock In {\em 2017 International Conference on Control, Artificial
+  Intelligence, Robotics \& Optimization (ICCAIRO)}, pages 22--27. IEEE.
+
+\bibitem[Tsitsiklis and Van~Roy, 1997]{tsitsiklis1997analysis}
+Tsitsiklis, J.~N. and Van~Roy, B. (1997).
+\newblock Analysis of temporal-diffference learning with function
+  approximation.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1075--1081.
+
+\bibitem[Van~Hasselt et~al., 2016]{van2016deep}
+Van~Hasselt, H., Guez, A., and Silver, D. (2016).
+\newblock Deep reinforcement learning with double q-learning.
+\newblock In {\em Thirtieth AAAI conference on artificial intelligence}.
+
+\bibitem[Vinyals et~al., 2019]{vinyals2019alphastar}
+Vinyals, O., Babuschkin, I., Chung, J., Mathieu, M., Jaderberg, M., Czarnecki,
+  W.~M., Dudzik, A., Huang, A., Georgiev, P., Powell, R., et~al. (2019).
+\newblock Alphastar: Mastering the real-time strategy game starcraft ii.
+\newblock {\em DeepMind Blog}.
+
+\bibitem[Wang et~al., 2015]{wang2015dueling}
+Wang, Z., Schaul, T., Hessel, M., Van~Hasselt, H., Lanctot, M., and De~Freitas,
+  N. (2015).
+\newblock Dueling network architectures for deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1511.06581}.
+
+\bibitem[Watkins and Dayan, 1992]{watkins1992q}
+Watkins, C.~J. and Dayan, P. (1992).
+\newblock Q-learning.
+\newblock {\em Machine learning}, 8(3-4):279--292.
+
+\bibitem[Zhu et~al., 2017]{zhu2017improving}
+Zhu, P., Li, X., Poupart, P., and Miao, G. (2017).
+\newblock On improving deep reinforcement learning for pomdps.
+\newblock {\em arXiv preprint arXiv:1704.07978}.
+
+
+\end{thebibliography}
