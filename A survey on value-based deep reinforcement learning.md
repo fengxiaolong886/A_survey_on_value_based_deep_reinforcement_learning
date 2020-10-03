@@ -1,6 +1,6 @@
 # A survey on value-based deep reinforcement learning
 
-## by XIaolong Feng
+## by Xiaolong Feng
 
 ## ABSTRACT
 
@@ -55,9 +55,7 @@ The simplest version of Q-learning is the tabular case, which looks up the Q val
 
 As we could get a lot of experience, in the form of  $(s,a,r,s')$. In fitted $Q$-learning, it use an function approximator to update the  $Q(s, a; \theta_k )$ in each iteration, where  $\theta_k$ with respect to the parameter of  the function  in $k_{th}$ iteration. So we could obtain the target value as the equation below:
 $$
-\begin{align}
 y_k = r +\gamma \operatorname*{max}_{a' \in  A} Q(s',a';\theta_{k})
-\end{align}
 $$
 **Neural Fitted $Q$-learning (NFQ):**
 
@@ -80,9 +78,7 @@ To address the unstable and divergence problem,  (Mnih et al., 2015) have propos
 
 To address the over-estimations  issue, (Van Hasselt et al., 2016) proposes a solution to divide the $max$ operation into two parts, action selection part and action evaluation part.  Two networks evaluate and choose action values according to the loss function as below:
 $$
-\begin{align}
 Loss=\Big[ r_{t} + \gamma \hat {Q} \Big(s_{t+1}, \arg \underset{a_{t+1}}{\max} {Q} \big(s_{t+1}, a_{t+1};{\theta} \big); {\theta}' \Big) - {Q}(s_t,a_t;{\theta}) \Big]^2
-\end{align}
 $$
 The evaluation network is parameterized by ${\theta}'$, and apply $\epsilon-greedy$ policy. The evaluate network will periodically be synchronized with the estimate network.
 
@@ -90,9 +86,7 @@ The evaluation network is parameterized by ${\theta}'$, and apply $\epsilon-gree
 
 We can decompose the Q-value function into value function and advantage function. So, the dueling DQN used a specialized dueling network architecture to implement this simple idea. (Wang et al., 2015) proposes to change the single output network to a double output network. They share the same encoder. The formulation can be considered as below:
 $$
-\begin{align}
-{Q} (s,a;{\theta_{1}},{\theta_{2}}) =  {V}(s;{\theta_{1}}) + \Big({A} (s,a;{\theta_{1}}) - \frac{\sum_{a'} {A} (s,a';{\theta_{1}})}{|{A}|}		\Big) ,
-\end{align}
+{Q} (s,a;{\theta_{1}},{\theta_{2}}) =  {V}(s;{\theta_{1}}) + \Big({A} (s,a;{\theta_{1}}) - \frac{\sum_{a'} {A} (s,a';{\theta_{1}})}{|{A}|}		\Big) 
 $$
 where $\theta_1$ is the parameter of advantage function structure, and $\theta_1$ is the parameter of the value function structure. 
 
@@ -100,7 +94,7 @@ where $\theta_1$ is the parameter of advantage function structure, and $\theta_1
 
 In the DQN algorithm, it proposes to use replay buffer technology and the algorithm uniformly sample from the buffer to train the neural network.  (Schaul et al., 2015) have a one more step idea for this technology, the proposed prioritized replay buffer. They set the priority of the experience in the buffer according to the defined rules, and then sample the experience by the priority. The high priority experience is worse to learn. Priority rules are usually set using TD error, but the choice of this method could be defined according to the particular problem. So, it is not easy when we could not know what experience is essential and what is not.
 
-.**Asynchronous Multi-step DQN:**
+**Asynchronous Multi-step DQN:**
 
 The previous DQN algorithm needs to consider using off-policy algorithms to improve efficiency, and it uses the replay buffer, which occupied much memory and computation resources. (Mnih et al., 2016) proposes an idea to use many agents to train the deep neural network. It applies the asynchronous gradient descent method to train the multiple agents. Each subprocess maintains its own environment, and all the accumulated gradient will be applied to the center. The n-step methods (Sutton and Barto, 2018)  will be used to update the reward function, and it will be used to trade off the bias and variance problem.
 
@@ -158,15 +152,11 @@ As the learning process progresses, each goal will become more and more similar,
 **Averaged-DQN Algorithm:**
 (Anschel et al., 2017) proposes the averaged-DQN algorithm to address the instability and variability issue for the original DQN algorithm. This algorithm averages the previous Q value estimates to make the training process more stable, and improves performance by reducing target approximation error(TAE). The averaged Q value have the below formulation:
 $$
-\begin{align}
-Q_{t}^{average}=\frac{1}{N}\sum_{n=1}^N{Q(s,a;\theta_{t-n}}
-\end{align}
+Q_{t}^{average}=\frac{1}{N}\sum_{n=1}^N{Q(s,a;\theta_{t-n}})
 $$
 Averaged-DQN algorithm will replace the target as:
 $$
-\begin{align}
 y_t= r +\gamma \operatorname*{max}_{a' \in  A} Q^{average}(s',a';\theta_{t})
-\end{align}
 $$
 This algorithm is a very semple extension for the original DQN algorithm, but the experiment has shown to be more stable than DQN algorithm.
 
@@ -182,15 +172,11 @@ This algorithm is a very semple extension for the original DQN algorithm, but th
 **DQN with log prior augmentation:**
  (Jaques et al., 2017) proposes the Deep $Q$-learning with log prior augmentation algorithm to improve the structure and quality of sequence, which is generated by the RNN network. This algorithm also retains the information obtained from the data and the diversity of the samples. First, it will pre-train the LSTM network by maximum likelihood estimation. Second, it assigns initial weights to three neural networks, $Q$-network, target network, and reward RNN network. Among them, the connection weight matrix and bias of the reward RNN network remain unchanged during the training process, and the prior strategy $\pi(a_t|s_t)$ is output at the same time. To apply the RL method to the sequence generation task, the state at time $t$ is defined as $s_t=\{a_1,a_2,\cdot \cdot \cdot, a_t\}$. The total reward is defined as the bellow equation with the constant $c$ to trade off the importance of the reward.
 $$
-\begin{align}
 r(s,a)=log\pi(a|s)+r_T(s,a)/c
-\end{align}
 $$
 Apply the reward to the DQN algorithm, they could get the target function as below:
 $$
-\begin{align}
 L(\theta)=\mathbf{E}_\beta[(r(s,a)+\gamma \operatorname*{max}_{a'}Q(s',a';\theta^-)-Q(s,a;\theta))^2]
-\end{align}
 $$
 **Gorila DQN Algorithm:**
  (Nair et al., 2015)  apply the general reinforcement learning architecture to the DQN algorithm. The Gorila DQN has massively distributed architecture for DRL. The architecture includes four components: parallel actors, parallel learners, distributed NN to represent the value, and the distributed storage of experience.
@@ -201,9 +187,7 @@ $$
 **DQN with Intrinsic Fear:**
  (Lipton et al., 2016a)  introduces intrinsic fear into the DQN to avoid the catastrophic states during the training. The key to the implementation is to train a danger model. It is a binary classification neural network, which has the same architecture with the DQN network except for the output layer. The danger model could predict the probability of the imminent catastrophe. The new algorithm changes the optimization target to the following equation.
 $$
-\begin{align}
 y^{IntrinsicFear}=r+\operatorname*{max}_{a'}Q(s',a';\theta_Q)-\lambda\cdot d(s';\theta_d)
-\end{align}
 $$
 The $(s';\theta_d)$ represents the danger model, and $\lambda$ is the fear factor, which trades off the importance of the intrinsic fear.
 
